@@ -115,7 +115,49 @@ function skipBackward(){
 
     if (wasPlaying) playSound();
 }
+
+function setVolume(delta){
+    if (!gainNode) return;
+
+    const slider = document.getElementById("volumeSlider");
+    const newValue = Math.min(Math.max(parseFloat(slider.value) + delta, 0), 1);
+
+    slider.value = newValue;
+    gainNode.gain.value = newValue;
+    if (isMuted && newValue > 0) isMuted = false;  // auto unmute if volume is raised
+} 
+
 // volume slider
 document.getElementById("volumeSlider").addEventListener("input", function(){
-    if (gainNode) gainNode.gain.value = this.value;
+    if (gainNode){
+        gainNode.gain.value = this.value;
+        if (isMuted && this.value > 0) isMuted = false; 
+    }
+});
+
+//Keyboard functions
+document.addEventListener("keydown", function(e){
+    switch(e.key){
+        case " ":                   
+            e.preventDefault();     
+            isPlaying ? pauseSound() : playSound();
+            break;
+        case "ArrowRight":          
+            skipForward();
+            break;
+        case "ArrowLeft":            
+            skipBackward();
+            break;
+        case "ArrowUp":              
+            e.preventDefault();      
+            setVolume(0.1);
+            break;
+        case "ArrowDown":            
+            e.preventDefault();
+            setVolume(-0.1);
+            break;
+        case "m":                    
+            muteSound();
+            break;
+    }
 });
