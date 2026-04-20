@@ -74,3 +74,19 @@ body {
     justify-content: center;
     transition: background 0.15s;
 }
+
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume label {
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.volume input[type="range"] {
+    flex: 1;
+}

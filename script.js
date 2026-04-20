@@ -82,7 +82,7 @@ function muteSound(){
     if (!gainNode) return;
 
     isMuted = !isMuted;
-    gainNode.gain.value = isMuted ? 0 : 1;
+    gainNode.gain.value = isMuted ? 0 : document.getElementById("volumeSlider").value;
 
     document.querySelector(".controls button:nth-child(2)").textContent = isMuted ? "Unmute" : "Mute";
 }
@@ -115,3 +115,7 @@ function skipBackward(){
 
     if (wasPlaying) playSound();
 }
+// volume slider
+document.getElementById("volumeSlider").addEventListener("input", function(){
+    if (gainNode) gainNode.gain.value = this.value;
+});
