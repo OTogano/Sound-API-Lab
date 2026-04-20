@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <div class="showUpload" id="showUpload">
+
+        <div class="uploadSection">
+            <label>Upload audio file here:</label>
+            <input type="file" id="audioFile" name="audioFile" accept="audio/*">
+            <button onclick="loadFromFile()">Load file</button>
+        </div>
+
+        <div class="trackInfo">
+            <p id="trackName">No file loaded</p>
+        </div>
+
+        <div class="controls">
+            <button onclick="skipBackward()">backward</button>  
+            <button onclick="muteSound()">mute</button>      
+            <button class="play-btn" onclick="playSound()">play</button> 
+            <button onclick="pauseSound()">pause</button>  
+            <button onclick="skipForward()">forward</button>  
+        </div>
+
+    </div>
+    <script src="script.js" async defer></script>
+</body>
+</html>
